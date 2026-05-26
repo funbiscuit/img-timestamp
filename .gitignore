@@ -1,2 +1,12 @@
 /.idea
 /target
+__pycache__
+.venv
+dist
+build
+*.egg-info
+.mypy_cache
+.ruff_cache
+/src/imgts/_version.py
+.pytest_cache
+*.pyc
