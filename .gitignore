@@ -10,3 +10,4 @@ build
 /src/imgts/_version.py
 .pytest_cache
 *.pyc
+uv.lock

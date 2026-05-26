@@ -58,12 +58,14 @@ def validate_plan(plan: Plan, directory: Path) -> tuple[bool, list[str]]:
         target_exists = action.new_path.exists()
 
         if not orig_exists and target_exists:
-            valid_actions.append(RenameAction(
-                original_path=action.new_path,
-                new_path=action.new_path,
-                source=action.source,
-                datetime=action.datetime,
-            ))
+            valid_actions.append(
+                RenameAction(
+                    original_path=action.new_path,
+                    new_path=action.new_path,
+                    source=action.source,
+                    datetime=action.datetime,
+                )
+            )
             continue
 
         if not orig_exists:

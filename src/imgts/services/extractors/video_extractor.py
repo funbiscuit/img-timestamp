@@ -1,20 +1,22 @@
 import struct
 from datetime import datetime, timedelta
 from pathlib import Path
+from typing import Any
 
 from imgts.constants import MAC_EPOCH, VIDEO_WITH_METADATA
 from imgts.models import DateSource, ExtractedDate
 from imgts.utils import validate_year
 
 
+_HAS_MEDIAINFO = False
+
 try:
-    from pymediainfo import MediaInfo  # type: ignore[import-untyped]
+    from pymediainfo import MediaInfo
 
     MediaInfo.can_parse()
     _HAS_MEDIAINFO = True
 except (ImportError, OSError):
-    _HAS_MEDIAINFO = False
-    MediaInfo = None  # type: ignore[assignment,misc]
+    MediaInfo: Any = None  # type: ignore[no-redef]
 
 
 def _mac_epoch_to_datetime(timestamp: int) -> datetime:
@@ -33,7 +35,7 @@ def _extract_mediainfo_date(path: Path) -> list[ExtractedDate]:
         return []
 
     try:
-        media_info = MediaInfo.parse(path)  # type: ignore[union-attr]
+        media_info = MediaInfo.parse(path)
 
         for track in media_info.tracks:
             if track.track_type == 'General':

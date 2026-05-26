@@ -38,6 +38,10 @@ strict = true
 mypy_path = ["src"]
 explicit_package_bases = true
 
+[[tool.mypy.overrides]]
+module = "pymediainfo.*"
+ignore_missing_imports = true
+
 [tool.setuptools]
 package-data = { imgts = [] }
 

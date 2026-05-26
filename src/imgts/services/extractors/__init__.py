@@ -5,6 +5,7 @@ from imgts.services.extractors.filename_extractor import extract_filename_date
 from imgts.services.extractors.filesystem_extractor import extract_filesystem_dates
 from imgts.services.extractors.video_extractor import _HAS_MEDIAINFO, extract_video_date
 
+
 _MEDIAINFO_WARNED = False
 
 
